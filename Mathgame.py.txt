@@ -1,0 +1,32 @@
+import random
+import time
+operators=['+','-','*']
+MIN_OPERAND=3
+MAX_OPERAND=12
+total_problems=10
+def generate_problem():
+    left=random.randint(MIN_OPERAND,MAX_OPERAND)
+    right=random.randint(MIN_OPERAND,MAX_OPERAND)
+    operator=random.choice(operators)
+    
+    expr=str(left)+" "+operator+" "+str(right)
+    ans=eval(expr)
+    return expr,ans
+wrong=0    
+input('Tap Enter to start')
+print('-------------------------------------------------------')
+start_time=time.time()
+for i in range(total_problems):
+    expr,ans=generate_problem()
+    while True:
+        guess=input("Problem # "+str(i+1)+":"+expr+"=")
+        if guess==str(ans):
+            break
+        wrong+=1 
+end_time=time.time()
+total_time=end_time-start_time
+print('-------------------------------------------------------')
+print('Nice work!!You finished in '+str(total_time)+" seconds!")
+
+    
+    
